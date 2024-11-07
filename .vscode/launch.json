@@ -18,7 +18,7 @@
             
             "debugServerPath": "${workspaceFolder}/_build_tools/launchMGBA.bat",
             "debugServerArgs": "${workspaceFolder}/build GBA_template.elf",
-            "miDebuggerPath": "C:/DEV/ARM_Toolchain/12.2/bin/arm-none-eabi-gdb.exe",
+            "miDebuggerPath": "${env:ARM_NONE_EABI_GCC_PATH}/arm-none-eabi-gdb.exe",
                 
            
             "setupCommands": [
