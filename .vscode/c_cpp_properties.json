@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "GBA_ARM",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/include"                
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "ARM7"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "compilerPath": "C:/DEV/ARM_Toolchain/12.2/bin/arm-none-eabi-gcc.exe",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

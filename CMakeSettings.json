@@ -1,0 +1,38 @@
+{
+    "version":3,
+    "configurations": [
+        {
+            "name": "base",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "cmakeToolchain": "${sourceDir}/gcc-arm-none-eabi.cmake",
+            "cmakeCommandArgs": "",
+            "buildCommandArgs": "-v",
+            "ctestCommandArgs": ""
+        },
+        {
+            "name":"debug",
+            "displayName": "gba_debug",
+            "inherits": "base",
+            "architecture": {
+                "value":"arm",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Debug"
+            }
+        },
+        {
+            "name":"release",
+            "displayName": "gba_release",
+            "inherits": "base",
+            "architecture": {
+                "value":"arm",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Release"
+            }
+        }
+    ]
+}

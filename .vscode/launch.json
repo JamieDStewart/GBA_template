@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+             "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "CMake: build", 
+            "stopAtEntry": true,
+            "environment": [],
+            "program": "${workspaceFolder}/build/GBA_template.elf",
+            "externalConsole": false,
+            "cwd": "${workspaceFolder}",
+            "targetArchitecture": "arm",
+            "MIMode": "gdb",
+            "miDebuggerServerAddress": "localhost:2345",
+            "serverLaunchTimeout": 3000,
+            
+            "debugServerPath": "${workspaceFolder}/_build_tools/launchMGBA.bat",
+            "debugServerArgs": "${workspaceFolder}/build GBA_template.elf",
+            "miDebuggerPath": "C:/DEV/ARM_Toolchain/12.2/bin/arm-none-eabi-gdb.exe",
+                
+           
+            "setupCommands": [
+                {   "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                
+            ],
+            "postDebugTask": "stop emulation",
+        }
+    ]
+}
