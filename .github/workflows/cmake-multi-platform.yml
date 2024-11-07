@@ -1,0 +1,50 @@
+# This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
+name: CMake on multiple platforms
+#on this is a review trigger - describes when the workflow/action will be executed. To be executed on push, and on pull request to "main"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
+      fail-fast: false
+
+      # Set up a matrix to run the following 3 configurations:
+      # 1. <ubuntu, Debug, Release, using ARM-none-eabi-gcc compiler toolchain >
+      #
+      # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
+      matrix:
+        os: [ubuntu-latest]
+        type: [Debug, Release]
+        
+    steps:
+    #Steps to building - Check out the code
+    - name: Checkout code
+      uses: actions/checkout@v4
+    #Step to install the GNU ARM Embedded Toolchain - explanation here: https://github.com/marketplace/actions/arm-none-eabi-gcc-gnu-arm-embedded-toolchain
+    - name: Install Arm GNU Toolchain (arm-none-eabi-gcc)
+      uses: carlosperate/arm-none-eabi-gcc-action@v1
+      with:
+        release: '12.2.Rel1' # <-- The compiler release to use
+        path-env-var: ARM_NONE_EABI_GCC_PATH # <-- path exported to environment variable
+    #Check the ARM_NONE_EABI_GCC_PATH variable
+    - name: The path will be exported to that environmental variable name
+      run: echo "The output path is $ARM_NONE_EABI_GCC_PATH"
+    #Step to install Ninja over Make default
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@v3
+
+    - name: Build binary
+      # Build the binary for this project setting the build path (-B) set the build system generator to ninja (-G) 
+      # Set the toolchain file for the build for GBA
+      run: |
+        cmake -Bbuild -GNinja -DCMAKE_TOOLCHAIN_FILE="cmake/arm-none-eabi-gcc.cmake" -DCMAKE_BUILD_TYPE="${{ matrix.type }}"
+        cmake --build build
+        
