@@ -21,8 +21,9 @@ jobs:
       #
       # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         type: [Debug, Release]
+        gcc: ['12.2.Rel1', 'latest']
         
     steps:
     #Steps to building - Check out the code
@@ -32,7 +33,7 @@ jobs:
     - name: Install Arm GNU Toolchain (arm-none-eabi-gcc)
       uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
-        release: '12.2.Rel1' # <-- The compiler release to use
+        release: ${{ matrix.gcc }} # <-- The compiler release to use
         path-env-var: ARM_NONE_EABI_GCC_PATH # <-- path exported to environment variable
     #Check the ARM_NONE_EABI_GCC_PATH variable
     - name: The path will be exported to that environmental variable name
