@@ -17,9 +17,8 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         type: [Debug, Release]
-        gcc: ['12.2.Rel1', 'latest']
         
     steps:
     #Steps to building - Check out the code

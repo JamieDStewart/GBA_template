@@ -12,6 +12,13 @@ if( WIN32 )
     URL_HASH   MD5=39d9882ca0eb475e81170ae826c1435d
     )
     FetchContent_MakeAvailable(ARM_GNU_toolchains)
+elseif( APPLE )
+    FetchContent_Declare(
+    ARM_GNU_toolchains
+    URL  https://developer.arm.com/-/media/Files/downloads/gnu/13.3.rel1/binrel/arm-gnu-toolchain-13.3.rel1-darwin-arm64-arm-none-eabi.tar.xz
+    URL_HASH   MD5=f1c18320bb3121fa89dca11399273f4e
+    )
+    FetchContent_MakeAvailable(ARM_GNU_toolchains)
 else()
     FetchContent_Declare(
     ARM_GNU_toolchains

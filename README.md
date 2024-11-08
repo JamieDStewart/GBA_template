@@ -8,14 +8,9 @@ Feel free to use this repo as a jumping off point for your own GBA development p
 
 ##Dependencies
 
-To build this project you will need the ARM Embedded Toolchain which can be downloaded from ARM here [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain) the latest release of the ARM GNU toolchain should work just fine.
-Once you have installed the toolchain to compile everything you will need to set an environment variable called **ARM_NONE_EABI_GCC_PATH** for the path to the Toolchain directory. You could follow this video on [how to set an environment variable](https://www.youtube.com/watch?v=5BTnfpIq5mI) or you could run *setx* from the command line.
-
-```
-setx ARM_NONE_EABI_GCC_PATH %where_you_installed_the_ARM_GNU_Toolchain%
-```
-
 Building the project requires the use of [CMake](https://cmake.org/download/) and [Ninja](https://github.com/ninja-build/ninja/releases). These can be installed from their respective links, once Ninja is installed you should add it to the PATH environment variable so that it will be picked up in the CMake build process for the project.
+
+The ARM GNU Toolchain is downloaded as a configuration step in the CMake process for this repository using FetchContent 
 
 ### VS Code Extensions
 
