@@ -10,7 +10,7 @@ Feel free to use this repo as a jumping off point for your own GBA development p
 
 Building the project requires the use of [CMake](https://cmake.org/download/) and [Ninja](https://github.com/ninja-build/ninja/releases). These can be installed from their respective links, once Ninja is installed you should add it to the PATH environment variable so that it will be picked up in the CMake build process for the project.
 
-The ARM GNU Toolchain is downloaded as a configuration step in the CMake process for this repository using FetchContent 
+The ARM GNU Toolchain is downloaded as a configuration step in the CMake process for this repository using FetchContent, this supports building using CMake on Unix, MacOS (Arm), and Windows and uses the latest [ARM GNU Toolchain version 13.3.Rel1](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) which can be read about on the provided link.
 
 ### VS Code Extensions
 
@@ -34,7 +34,7 @@ Unless you're going to build the rom and put it straight onto a physical GBA you
 
 **tasks.json** - This file contains a couple of tasks that I find handy that you can delete if you choose to, the first one is a **stop emulation** task that calls taskkill to terminate the mGBA process, this is a windows only task so won't work on Unix or Mac. Then there's **run** label I sometimes use No$GBA as the source debugger is pretty great, you mightneed to modify it to look for no$GBA.exe in the correct location.
 
-## Debugging the Game
+## Building the GBA Binary
 Once all of the above has been squared away you should be able to make this project.
 
 *Step 1:* Run the CMake Configuration by pressing ctrl+shift+p and selecting CMake:Configure. Read any output messages, to make sure there are no errors. If there are any ensure that you have the correct environment variables set up and that all dependencies are installed.
