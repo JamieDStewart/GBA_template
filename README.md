@@ -1,4 +1,4 @@
-![example workflow](https://github.com/JamieDStewart/GBA_template/actions/workflows/cmake-multi-platform.yml/badge.svg)
+![example workflow](https://github.com/JamieDStewart/GBA_template/actions/workflows/cmake-build-gba-binary.yml/badge.svg)
 
 # GBA_template
 

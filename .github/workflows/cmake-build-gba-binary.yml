@@ -25,15 +25,6 @@ jobs:
     #Steps to building - Check out the code
     - name: Checkout code
       uses: actions/checkout@v4
-    #Step to install the GNU ARM Embedded Toolchain - explanation here: https://github.com/marketplace/actions/arm-none-eabi-gcc-gnu-arm-embedded-toolchain
-    - name: Install Arm GNU Toolchain (arm-none-eabi-gcc)
-      uses: carlosperate/arm-none-eabi-gcc-action@v1
-      with:
-        release: ${{ matrix.gcc }} # <-- The compiler release to use
-        path-env-var: ARM_NONE_EABI_GCC_PATH # <-- path exported to environment variable
-    #Check the ARM_NONE_EABI_GCC_PATH variable
-    - name: ARM GNU Toolchain Path Verification
-      run: echo "The output path is $ARM_NONE_EABI_GCC_PATH"
     #Step to install Ninja over Make default
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@v3
