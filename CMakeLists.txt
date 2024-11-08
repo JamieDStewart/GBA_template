@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.24)
 
 #Attempt to fetch the ARM GNU Toolchain as part of the build process
 #  Calling FetchContent_MakeAvailable will download the toolchain into the /_deps/arm_gnu_toolchains-src/ folder
