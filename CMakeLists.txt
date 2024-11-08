@@ -1,5 +1,26 @@
 cmake_minimum_required(VERSION 3.19)
 
+#Attempt to fetch the ARM GNU Toolchain as part of the build process
+#  Calling FetchContent_MakeAvailable will download the toolchain into the /_deps/arm_gnu_toolchains-src/ folder
+#  This folder is then used to get the path to the ARM GCC compiler to create the binary.
+#  This process runs on configuration of CMake and will take a small amount of time, subsequent runs will not fetch the ARM toolchain.
+include(FetchContent)
+if( WIN32 )
+    FetchContent_Declare(
+    ARM_GNU_toolchains
+    URL  https://developer.arm.com/-/media/Files/downloads/gnu/13.3.rel1/binrel/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi.zip
+    URL_HASH   MD5=39d9882ca0eb475e81170ae826c1435d
+    )
+    FetchContent_MakeAvailable(ARM_GNU_toolchains)
+else()
+    FetchContent_Declare(
+    ARM_GNU_toolchains
+    URL  https://developer.arm.com/-/media/Files/downloads/gnu/13.3.rel1/binrel/arm-gnu-toolchain-13.3.rel1-x86_64-arm-none-eabi.tar.xz
+    URL_HASH   MD5=0601a9588bc5b9c99ad2b56133b7f118
+    )
+    FetchContent_MakeAvailable(ARM_GNU_toolchains)
+endif()
+
 #Print out extra messages to see exactly what CMAKE is up to 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 #Path to toolchain file - this is placed before call to project(###)
